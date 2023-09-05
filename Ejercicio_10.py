@@ -12,6 +12,11 @@ sexo = ["m","m","f","m","f"]
 nota = [6,8,10,8,5] """
 
 contador = 0
+contador_mujeres = 0
+acumulador_notas_f = 0
+
+nota_minima = None
+
 lista_nombres = []
 lista_sexo = []
 lista_notas = []
@@ -31,14 +36,26 @@ while contador < 3:
     
     nota = int(input('Ingrese su nota: '))
     while nota <= 0 or nota > 10:
-        nota = int(input('Error. Ingrese una nota valida: '))
+        nota = int(input('Error. Ingrese una nota valida: '))    
         
     lista_nombres.append(nombre)
     lista_sexo.append(sexo)
     lista_notas.append(nota)
-    
-    contador += 1
 
-print(f'el contador es: {contador}\ny la lista de nombres es {lista_nombres}\nsu sexo es: {lista_sexo}\ny su nota es: {lista_notas}')
+    contador += 1
+    
+    for nota in lista_notas:
+        if nota_minima == None or nota < nota_minima:
+            nota_minima = nota
+            indice_menor_nota = contador
+        
+for i in range(len(lista_sexo)):   
+        if lista_sexo[i] == "F":
+            contador_mujeres += 1
+            acumulador_notas_f += lista_notas[i]
+promedio_notas_f = acumulador_notas_f / contador_mujeres       
+ 
+print(f'la nota minima es: {nota_minima} y su nombre es: {lista_nombres[indice_menor_nota]}')
+print(f'acumulador de notas f: {acumulador_notas_f}\n hay {contador_mujeres} mujeres\n el promedio de las notas es: {promedio_notas_f}')
 
 
