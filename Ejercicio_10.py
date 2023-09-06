@@ -44,18 +44,22 @@ while contador < 3:
 
     contador += 1
     
-    for nota in lista_notas:
-        if nota_minima == None or nota < nota_minima:
-            nota_minima = nota
-            indice_menor_nota = contador
-        
-for i in range(len(lista_sexo)):   
+for i in range(len(lista_nombres)):
+    nota = lista_notas[i]
+    if nota_minima == None or nota < nota_minima:
+        nota_minima = nota
+        nombre_minimo = lista_nombres[i]
+
+for i in range(len(lista_notas)):   
         if lista_sexo[i] == "F":
             contador_mujeres += 1
             acumulador_notas_f += lista_notas[i]
-promedio_notas_f = acumulador_notas_f / contador_mujeres       
  
-print(f'la nota minima es: {nota_minima} y su nombre es: {lista_nombres[indice_menor_nota]}')
-print(f'acumulador de notas f: {acumulador_notas_f}\n hay {contador_mujeres} mujeres\n el promedio de las notas es: {promedio_notas_f}')
+print(f'la nota minima es: {nota_minima} y su nombre es: {nombre_minimo}')
+if contador_mujeres >= 1 :
+    promedio_notas_f = acumulador_notas_f / contador_mujeres       
+    print(f'acumulador de notas f: {acumulador_notas_f}\n hay {contador_mujeres} mujeres\n el promedio de las notas es: {promedio_notas_f}')
+else:
+    print('NO SE ENCONTRARON MUJERES EN EL LISTADO')
 
 
